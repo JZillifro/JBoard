@@ -1,0 +1,7 @@
+{
+  "mlab_host": "mongodb://ds237922.mlab.com:37922/jboard",
+  "mlab_username": "jacob",
+  "mlab_password": "JacobBoard97",
+
+  "BASE_FE_URL": "http://localhost:3000/"
+}
