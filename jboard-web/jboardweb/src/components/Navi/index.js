@@ -1,5 +1,7 @@
 import React from 'react';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import ForumDropdown from '../Navi/ForumDropdown'
+import AboutModal from '../Footer/AboutModal';
 
 export default class Navi extends React.Component {
   render() {
@@ -14,19 +16,13 @@ export default class Navi extends React.Component {
           <Navbar.Toggle />
           <Navbar.Collapse>
             <Nav>
-              <NavItem eventKey={1} href="#">
+              <NavItem eventKey={1} href="#top">
                 Top of page
               </NavItem>
-              <NavItem eventKey={2} href="#">
-                Bottom of page
+              <NavItem eventKey={1} href="/discover">
+                Discover
               </NavItem>
-              <NavDropdown eventKey={3} title="Forums" id="basic-nav-dropdown">
-                <MenuItem eventKey={3.1} href={"/computer_science"}>computer_science</MenuItem>
-                <MenuItem eventKey={3.2} href={"/memes"}>memes</MenuItem>
-                <MenuItem eventKey={3.3} href={"/movies"}>movies</MenuItem>
-                {/* <MenuItem divider />
-                <MenuItem eventKey={3.4}>Separated link</MenuItem> */}
-              </NavDropdown>
+              <ForumDropdown/>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

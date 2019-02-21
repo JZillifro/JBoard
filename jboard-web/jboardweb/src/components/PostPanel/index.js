@@ -1,5 +1,6 @@
 import React from 'react';
 import {Panel, Col, Image, Button} from 'react-bootstrap';
+import Zoom from 'react-thumbnail-zoom';
 
 const PostPanel = ({
   id,
@@ -21,15 +22,19 @@ const PostPanel = ({
                 </header>
               </a>
               <div class="desc">
-                <p>{text}</p>
-                <span class="icon fa-comment">{commentCount}</span><span>    </span>
-                <span class="icon fa-arrows-v">{voteScore}</span>
+              {
+                //<div dangerouslySetInnerHTML={{ __html: text }} style={{whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",}}/>
+              }
+                <span> | </span><span class="icon fa-comment"> </span><span>{commentCount}</span><span> | </span>
+                <span class="icon fa-arrows-v"> </span><span>{voteScore}</span><span> | </span>
               </div>
             </div>
             <div class="col-6 col-12-medium imp-medium">
+
               <a href={"/post/" + id}>
-                <span class="image fit"><img src={image} alt="" /></span>
+                <span><img src={image} alt="" style={{maxHeight:"20vh"}}/></span>
               </a>
+
             </div>
           </div>
         </div>

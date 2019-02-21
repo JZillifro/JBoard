@@ -27,12 +27,14 @@ db = MongoEngine(app)
 
 from jboardapi.posts.views import posts_blueprint
 from jboardapi.comments.views import comments_blueprint
+from jboardapi.forums.views import forums_blueprint
 
 # register blueprints
 
 blueprints = [
     posts_blueprint,
-    comments_blueprint
+    comments_blueprint,
+    forums_blueprint
 ]
 for blueprint in blueprints:
     csrf.exempt(blueprint)

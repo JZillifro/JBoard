@@ -14,9 +14,9 @@ def get_comment_data():
     id = request.args.get('id')
     comments = []
     if type == "p":
-        comments = Comment.objects(pref=id)
+        comments = Comment.objects(p_ref=id)
     elif type == "c":
-        comments = Comment.objects(cref=id)
+        comments = Comment.objects(c_ref=id)
     result = [json.loads(comment.to_json()) for comment in comments]
     for comment in result:
         comment['_id'] = comment['_id']['$oid']
@@ -36,15 +36,20 @@ def new_one():
     else:
         type = request.form.get('type')
         if type == "p":
+
+            post = Post.objects.get(id=request.form.get('id'))
+            post.comment_count = post.comment_count + 1
+            post.save()
+
             new_comment = Comment(
                 text = request.form.get('text'),
-                pref = request.form.get('id')
+                p_ref = request.form.get('id')
             )
             new_comment.save()
         elif type == "c":
             new_comment = Comment(
                 text = request.form.get('text'),
-                cref = request.form.get('id')
+                c_ref = request.form.get('id')
             )
             new_comment.save()
 

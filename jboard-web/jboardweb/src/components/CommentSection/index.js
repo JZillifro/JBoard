@@ -1,5 +1,5 @@
 import React from 'react';
-import {Label, Jumbotron, Image, Col, Row} from 'react-bootstrap';
+import {Label, Jumbotron, Image, Col, Row, Button} from 'react-bootstrap';
 import {BASE_API_URL} from '../common/Constants.jsx';
 import axios from 'axios';
 import CommentForm from '../CommentSection/CommentForm';
@@ -8,7 +8,10 @@ import CommentPanel from '../CommentSection/CommentPanel';
 export default class CommentSection extends React.Component {
   constructor(props, {match}) {
     super(props)
-    this.state = {}
+    this.state = {
+      reply: false
+    }
+    this.replySwitch = this.replySwitch.bind(this);
   }
 
   componentDidMount() {
@@ -20,11 +23,21 @@ export default class CommentSection extends React.Component {
     });
   }
 
+  replySwitch(event) {
+    // event.preventDefault();
+    this.setState({
+      reply: !this.state.reply
+    });
+  }
+
   render() {
     if(this.state.comments){
       return (
         <div>
-          <CommentForm type={this.props.type} id={this.props.id}/>
+          <a onClick={() => this.replySwitch()} style={{color: "rgb(211,211,211)"}}>reply</a>
+          {
+            this.state.reply && <CommentForm type={this.props.type} id={this.props.id}/>
+          }
           {
             this.state.comments.map(
               (comment, i) => {

@@ -16,7 +16,7 @@ export default class CommentPanel extends React.Component {
 
   render() {
       return (
-        <Panel defaultExpanded>
+        <Panel defaultExpanded style={{marginLeft:"5%"}}>
           <Panel.Collapse>
             <Panel.Body>
               {this.props.text}

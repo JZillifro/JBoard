@@ -20,7 +20,10 @@ function FieldGroup({ id, label, help, ...props }) {
 export default class CommentForm extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      reply: false
+    }
+    
   }
 
   handleSubmit() {
@@ -36,23 +39,14 @@ export default class CommentForm extends React.Component {
   }
 
   render() {
-    return(<div>
-      <Panel defaultExpanded>
-        <Panel.Heading>
-          <Panel.Toggle componentClass="a"><Button bsSize="xsmall">Create a Comment</Button></Panel.Toggle>
-        </Panel.Heading>
-        <Panel.Collapse>
-          <Panel.Body>
-          <form id={this.props.id}>
-              <FormGroup controlId="formControlsTextarea">
-                <FormControl componentClass="textarea" placeholder="Enter text" />
-              </FormGroup>
-              <Button type="submit" onClick={ () => this.handleSubmit() }>Submit</Button>
-            </form>
-          </Panel.Body>
-        </Panel.Collapse>
-      </Panel>
+      return(<div>
+        <form id={this.props.id}>
+          <FormGroup controlId="formControlsTextarea">
+            <FormControl componentClass="textarea" placeholder="Reply" />
+          </FormGroup>
+          <Button size = "sm" type="submit" onClick={ () => this.handleSubmit() }>Submit</Button>
+        </form>
+      </div>)
 
-    </div>)
   }
 }

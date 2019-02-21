@@ -6,11 +6,14 @@ import PostPanel from '../PostPanel';
 export default class HomeBoard extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      sort: "best"
+    }
+
   }
 
   componentDidMount() {
-    axios.get(`${BASE_API_URL}/posts/_landing`).then(res => {
+    axios.get(`${BASE_API_URL}/posts/_landing?sort=${this.props.sort}`).then(res => {
       const posts = res.data
       this.setState({posts})
     }).catch(err => {
@@ -33,7 +36,10 @@ export default class HomeBoard extends React.Component {
             <div style={{marginLeft: '20px', marginRight: '20px'}}>
               <br/><br/><br/><br/>
               {
-                this.state.posts.map((post, i) => {
+                this.props.sort
+              }
+              {
+                this.state.posts.slice(0, this.state.numPosts).map((post, i) => {
                   return (
                     <PostPanel
                       id = {post['_id']}
